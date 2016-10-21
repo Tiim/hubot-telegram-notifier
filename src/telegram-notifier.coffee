@@ -30,8 +30,8 @@ module.exports = (robot) ->
   bot = new TelegramBot(token, {polling: true});
 
   robot.enter (res) ->
-    promise = bot.sendMessage chatId, "#{res.user.name} joined", {}
+    promise = bot.sendMessage chatId, "#{res.message.user.name} joined", {}
     promise.catch (err) -> robot.logger.error err
   robot.leave (res) ->
-    promise = bot.sendMessage chatId, "#{res.user.name} left", { disable_notification: true }
+    promise = bot.sendMessage chatId, "#{res.message.user.name} left", { disable_notification: true }
     promise.catch (err) -> robot.logger.error err
