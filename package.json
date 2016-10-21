@@ -1,0 +1,25 @@
+{
+  "name": "hubot-telegram-notifier",
+  "description": "A hubot script that notifies a telegram chat when users join or leave the hubot chat",
+  "version": "0.1.0",
+  "author": "Tiim",
+  "license": "MIT",
+  "keywords": "hubot, hubot-scripts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Tiim/hubot-telegram-notifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tiim/hubot-telegram-notifier/issues"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.24.0"
+  },
+  "peerDependencies": {
+    "hubot": "2.x"
+  },
+  "main": "index.coffee",
+  "scripts": {
+    "test": "true"
+  }
+}
