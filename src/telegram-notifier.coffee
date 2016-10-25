@@ -31,9 +31,9 @@ module.exports = (robot) ->
 
   robot.enter (res) ->
     robot.logger.info "User joined"
-    promise = bot.sendMessage chatId, ":white_check_mark: #{res.message.user.name} is now online", {}
+    promise = bot.sendMessage chatId, "✅ #{res.message.user.name} is now online", {}
     promise.catch (err) -> robot.logger.error err
   robot.leave (res) ->
     robot.logger.info "User left"
-    promise = bot.sendMessage chatId, ":x: #{res.message.user.name} is now offline", { disable_notification: true }
+    promise = bot.sendMessage chatId, "❌ #{res.message.user.name} is now offline", { disable_notification: true }
     promise.catch (err) -> robot.logger.error err
