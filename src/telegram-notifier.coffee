@@ -55,7 +55,7 @@ module.exports = (robot) ->
     robot.logger.info "User left"
     id = robot.brain.get 'telegramLastMsgId'
     if id?
-      p = bot.editMessageText buildMessage("These people are now online:"), id
+      p = bot.editMessageText buildMessage("❌ #{res.message.user.name} left, these people are still online:"), id
       p.then successHandler, errorHandler
     else
       p = bot.sendMessage chatId, "❌ #{res.message.user.name} is now offline", { disable_notification: true }
