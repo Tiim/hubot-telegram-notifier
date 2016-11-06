@@ -22,8 +22,8 @@ chatId = process.env.HUBOT_TELEGRAM_CHAT_ID
 
 emojis =
   online: '✅'
-  idle: '🔴'
-  dnd: '🌕'
+  idle: '🌕'
+  dnd: '🔴'
   offline: '❌'
 
 module.exports = (robot) ->
@@ -35,9 +35,11 @@ module.exports = (robot) ->
 
   bot = new TelegramBot(token, {polling: true});
 
+  # Save last sent message id and chat id to brain
   successHandler = (value) -> robot.brain.set 'telegramLastMsgId', {message_id: value.message_id, chat_id: value.chat.id}
-  errorHandler = (error) -> robot.logger.error error
+  errorHandler = (error) -> robot.logger.error "Failed to send message to telegram: #{error.message}"
 
+  # Build the list of non-offline people (online, idle, do not desturb, etc)
   buildMessage = (message, exclude_id) ->
     users = robot.brain.users()
     for k, u of users
