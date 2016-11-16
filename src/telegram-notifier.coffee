@@ -48,13 +48,13 @@ module.exports = (robot) ->
     message
 
   robot.enter (res) ->
-    robot.logger.info "User joined"
+    robot.logger.info "#{res.message.user.name} joined"
     p = bot.sendMessage chatId, buildMessage("✅ #{res.message.user.name} is now online", res.message.user.id), {}
     p.then successHandler, errorHandler
 
 
   robot.leave (res) ->
-    robot.logger.info "User left"
+    robot.logger.info "#{res.message.user.name} left"
     id = robot.brain.get 'telegramLastMsgId'
     if id?
       p = bot.editMessageText buildMessage("❌ #{res.message.user.name} left, these people are still online:"), id
